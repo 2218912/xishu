@@ -1,0 +1,37 @@
+{
+  "id": "3728675",
+  "name": "主页",
+  "font_family": "iconfont",
+  "css_prefix_text": "icon-",
+  "description": "",
+  "glyphs": [
+    {
+      "icon_id": "383686",
+      "name": "实心",
+      "font_class": "shixin",
+      "unicode": "e635",
+      "unicode_decimal": 58933
+    },
+    {
+      "icon_id": "1346241",
+      "name": "归档项目",
+      "font_class": "guidangxiangmu",
+      "unicode": "e660",
+      "unicode_decimal": 58976
+    },
+    {
+      "icon_id": "8473893",
+      "name": "链接",
+      "font_class": "lianjie",
+      "unicode": "e620",
+      "unicode_decimal": 58912
+    },
+    {
+      "icon_id": "5121531",
+      "name": "主页",
+      "font_class": "zhuye",
+      "unicode": "e64e",
+      "unicode_decimal": 58958
+    }
+  ]
+}
