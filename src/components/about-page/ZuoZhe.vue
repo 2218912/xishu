@@ -7,7 +7,7 @@
         ，这世间种种琐事很繁杂，所以选择网站开发，
         让自己每天保持一颗积极的心。
     </p>
-    <zuoze class="right_box">
+    <zuoze class="right_box" :class="{theme_main_white:theme,theme_black:!theme}">
         <font slot="title">戏叔亲笔</font>
           <font slot="MainText">hi~~<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
             我是这个网站的作者，希望您能留在本站分享你每一天愉快的心情，
@@ -18,10 +18,14 @@
 </template>
 
 <script>
-import zuoze from '../components/Left_Box.vue'
+import zuoze from '../my-box/Left_Box.vue'
+import {mapState} from 'vuex'
 export default {
 components:{
     zuoze
+},
+computed:{
+  ...mapState('theme',{theme:'theme'})
 }
 }
 </script>
@@ -37,8 +41,6 @@ font{
 
 .right_box{
     width: 500px;
-    /* margin-left:50%;
-    transform: translateX(-50%); */
     margin: 0 auto;
     margin-top: 10px;
 }

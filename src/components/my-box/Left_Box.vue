@@ -1,6 +1,6 @@
 <template>
     <div>
-        <div class="left_box">
+        <div :class="{left_box:true,theme_white:theme,theme_black:!theme}">
             <h3>
                 <slot name="title"></slot>
             </h3>
@@ -18,6 +18,7 @@
 </template>
 
 <script>
+import {mapState} from 'vuex'
 
 export default {
     name:'LeftBox',
@@ -25,6 +26,9 @@ export default {
         return{
 
         }
+    },
+    computed:{
+        ...mapState('theme',{theme:'theme'})
     }
 }
 </script>
@@ -34,9 +38,7 @@ export default {
     position: relative;
     width: 100%;
     height: 200px;
-    /* border: 1px solid rgba(0,0,0,0.4); */
-    background: white;
-    border-radius: 5px;
+    border-radius: 30px;
     box-shadow: 0 0 10px rgba(0, 0, 0, .3);
     h3{
         margin-top: 5px;
@@ -52,7 +54,7 @@ export default {
         margin-top: 10px;
         text-align: center;
         font-weight: bold;
-        color: black;
+        // color: black;
         padding: 0 25px ;
     }
     #img{
@@ -76,9 +78,9 @@ export default {
 .left_box:hover{
     transform:scale(1.02);
     box-shadow: 0 0 10px rgba(0, 0, 0, .4);
-    transition: all 0.5s;
+    transition: background 2s, color 2s,transform .5s;
 }
 .left_box{
-    transition: all 0.5s;
+    transition: background 2s, color 2s,transform .5s;
 }
 </style>

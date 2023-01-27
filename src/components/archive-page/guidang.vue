@@ -3,6 +3,7 @@
         <div>
             <Paging>
                 <div id="guidang" slot="guidang"  >
+                <Theme slot="guidang"/>
                 <guidang1 v-for="(item,index) in scenery" :key="index">
                     <i slot="title" href="">{{ item.title }}</i>
                     <img :src="item.src" >
@@ -16,20 +17,21 @@
 
 <script>
 // import MyHeader from '../components/MyHeader.vue'
-import Paging from '../components/Paging.vue'
-import guidang1 from '../components/guidang1.vue'
+import Paging from '../my-page/Paging.vue'
+import guidang1 from '../archive-page/guidang1.vue'
+import Theme from '../theme-btn/Theme.vue'
 
 export default {
 components:{
     // MyHeader
-    Paging,guidang1
+    Paging,guidang1,Theme
 },
 data(){
     return{
         scenery:[
-            {title:'风景',src:require('../../public/img/scenery-img/1.jpg'),},
-            {title:'科技',src:require('../../public/img/scenery-img/2.jpg')},
-            {title:'生活',src:require('../../public/img/scenery-img/3.jpg')}
+            {title:'风景',src:require('../../assets/scenery-img/1.jpg'),},
+            {title:'科技',src:require('../../assets/scenery-img/2.jpg')},
+            {title:'生活',src:require('../../assets/scenery-img/3.jpg')}
         ]
     }
 }

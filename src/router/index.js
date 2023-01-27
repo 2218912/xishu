@@ -1,11 +1,15 @@
 import Vue from 'vue'
 import VueRouter from 'vue-router'
 // import Home from '../components/Home'
-import Homea from '../components/Homea'
+import Home from '../components/home-page/Home'
 
-import About from '../components/About'
+import About from '../components/about-page/About'
 // import Paging from '../components/Paging'
-import Guidang from '../components/guidang'
+import Guidang from '../components/archive-page/guidang'
+
+import LoginPage from '../components/login-page/LoginPage'
+    import Login from '../components/login-page/Login'
+        import Register from '../components/login-page/Register'
 
 
 Vue.use(VueRouter)
@@ -14,7 +18,7 @@ const routes=[
 {
     path:'/',
     // name:'home',
-    component:Homea,
+    component:Home,
     // redirect:'/home'
     // children:[
     // ]
@@ -29,6 +33,15 @@ const routes=[
     name:'about',
     component:About
 },
+{
+    path:'/login',
+    name:'login',
+    component:LoginPage,
+    children:[
+        {path:'/',component:Login},
+        {path:'/register',component:Register}
+    ]
+}
 
 ]
 
