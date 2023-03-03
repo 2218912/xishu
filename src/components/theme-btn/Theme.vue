@@ -1,14 +1,22 @@
 <template>
   <div>
     <div id="side-tool" >
-        <div id="side-tool-chidren" @click="time" >
-            <i class="iconfont icon-yejian1"></i>
+        <div id="top">
+            <div id="side-tool-chidren" @click="background" :class="{righta:true,come:theme,to:!theme}"   >
+                <i class="iconfont icon-denglu"></i>
+            </div>
+
+            <div id="side-tool-chidren" @click="time" :class="{righta:true,come:theme,to:!theme}"   >
+                <i class="iconfont icon-yejian1"></i>
+            </div>
         </div>
-        <div id="side-tool-chidren" @click="time" >
-          <i class="iconfont icon-shezhi setup"></i>
-        </div>
-        <div id="side-tool-chidren" @click="top" >
-          <i class="iconfont icon-arrowupshangjiantou"></i>
+        <div id="bottom">
+            <div id="side-tool-chidren" @click="setup" >
+              <i class="iconfont icon-shezhi setup"></i>
+            </div>
+            <div id="side-tool-chidren" @click="top" >
+              <i class="iconfont icon-arrowupshangjiantou"></i>
+            </div>
         </div>
         </div>
   </div>
@@ -19,10 +27,15 @@ export default {
 
     data(){
         return{
+            theme:true,
             theme1:true
         }
     },
     methods:{
+        background(){
+            this.$router.replace('/background/home').catch(err => err)
+            // window.location='http://127.0.0.1:8080/#/background/home'
+        },
         top(){
         this.$nextTick(()=>{
             const top=setInterval(() => {
@@ -39,6 +52,10 @@ export default {
             }, 15);
         })
       
+        },
+        setup(){
+            // console.log('1');
+            this.theme=!this.theme
         },
         time(){
             this.theme1=!this.theme1
@@ -57,23 +74,56 @@ export default {
         bottom: 30px;
         // transform:translateY(-50%);
         width: 40px;
-        height: 130px;
+        height: 150px;
         display: flex;
         flex-direction: column;
-        justify-content: space-between;
+        justify-content: space-evenly;
         z-index: 101;
         .setup{
             transform-origin:50% 50%;
-            animation: setup 1999990000s;
+            animation:2s linear infinite running setup;
         }
         @keyframes setup{
             0%{
                 transform: rotate(0deg);
             }
             100%{
-                transform: rotate(999999999999deg);
+                transform: rotate(360deg);
             }
-            
+        }
+        .righta{
+            // margin: 100px;
+            // position: ;
+            // top:-50px;
+            // right: -45px;
+            transition: all 2s;
+        }
+        #top{
+            height: 100px;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-evenly;
+        }
+        #bottom{
+            height: 100px;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-evenly;
+        }
+        .come{
+            animation:run 0.5s forwards;
+        }
+        .to{
+            animation:run 0.5s alternate forwards ;
+        }
+
+        @keyframes run{
+            0%{
+                transform: translateX(50px);
+            }
+            100%{
+                // transform: translateX(0px);
+            }
         }
         #side-tool-chidren{
           width: 35px;

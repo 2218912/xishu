@@ -22,6 +22,11 @@ const theme={
 }
 }
 
+// const essaydata={
+//     namespaced:true,
+//     actions:
+// }
+
 
 export default new Vuex.Store({
     modules:{

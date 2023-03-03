@@ -6,13 +6,25 @@
                       <td colspan="2">用户名</td>
                   </tr>
                   <tr>
-                      <td colspan="2"><input v-model="username" type="text"></td>
+                      <td colspan="2"><input v-model="username" placeholder="用户名6-10位"></td>
                   </tr>
                   <tr>
                       <td>密码</td>
                   </tr>
                   <tr>
-                      <td colspan="2"><input v-model="password" type="text"></td>
+                      <td colspan="2"><input v-model="password" type="password" placeholder="密码请以字母开头"></td>
+                  </tr>
+                  <tr>
+                    <td>手机号</td>
+                  </tr>
+                  <tr>
+                    <td><input type="text" v-model="tel" placeholder="输入手机号"></td>
+                  </tr>
+                  <tr>
+                    <td>邮箱</td>
+                  </tr>
+                  <tr>
+                    <td><input type="text" v-model="email" placeholder="输入邮箱"></td>
                   </tr>
                   <!-- <tr><td><p>{{ message }}</p></td></tr> -->
                   <tr>
@@ -43,27 +55,31 @@
       return{
         username:'',
         password:'',
-        message:''
+        tel:'',
+        email:'',
+        message:'',
       }
   },
   components:{
   },
   methods:{
     register(){
-        axios.defaults.baseURL='http://127.0.0.1/api'
+        // axios.defaults.baseURL='http://127.0.0.1/api'
         axios({
             method:'POST',
-            url:'/register',
+            url:'/api/register',
             data:{
                 username:this.username,
-                password:this.password
+                password:this.password,
+                tel:this.tel,
+                email:this.email
             }
         }).then((result) => {
             if(result.status>=200&&result.status<300){
                 this.message=result.data.message
                 alert(this.message)
-                
             }
+            // if()
         }).catch((err) => {
             console.log(err.message);
         });
@@ -78,11 +94,12 @@
       margin: 0 auto;
   }
   h2{
+      margin-top: -15px;
       text-align: center;
       font-style:oblique;
   }
   table{
-      margin-top: 20px;
+      margin-top: 10px;
       display: flex;
       flex-direction:column;
       justify-content: center;
@@ -93,6 +110,7 @@
       outline: none;
       border: 0;background:none;
       border-bottom: 1px solid rgba(0, 0, 0, .5);
+      text-align: center;
   }
   button{
       height: 25px;

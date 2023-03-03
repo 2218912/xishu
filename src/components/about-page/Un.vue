@@ -1,8 +1,5 @@
 <template>
-  <div>
-    <Paging>
-     <div slot="about">
-      <div >
+    <div slot="about">
       <h1>作者的介绍</h1>
       <h3>作者:戏叔</h3>
       <p>
@@ -18,31 +15,22 @@
               不开心也是一天，何不开开心心地过好每一天呢！！</font>
       </box>
     </div>
-     </div>
-      <!-- <ZuoZhe/> -->
-    </Paging>
-  </div>
-</template>
-
-<script>
+  </template>
+  
+  <script>
   import box from '../my-box/Left_Box.vue'
-// import Paging from './Un.vue';
-import Paging from '../my-page/Paging.vue'
-// import Zuozhe from './Zuozhe.vue'
-// import box from '../my-box/Left_Box.vue'
-import {mapState} from 'vuex'
-
-export default {
-    components:{
-        Paging,box
-    },
-    computed:{
-  ...mapState('theme',{theme:'theme'})
-}
-}
-</script>
-
-<style scoped>
+  // import {mapState} from 'vuex'
+  export default {
+  components:{
+      box
+  },
+  computed:{
+    ...mapState('theme',{theme:'theme'})
+  }
+  }
+  </script>
+  
+  <style scoped>
   h1,h3,p{
       text-align: center;
   }
@@ -50,10 +38,10 @@ export default {
       text-indent: 2em;
       width: 250px;
   }
-
+  
   .right_box{
       width: 500px;
       margin: 0 auto;
       margin-top: 10px;
   }
-</style>
+  </style>

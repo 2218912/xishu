@@ -7,13 +7,13 @@
                     
                 </tr>
                 <tr>
-                    <td colspan="2"><input type="text"></td>
+                    <td colspan="2"><input v-model="username" class="bordercolor"  type="text" placeholder="输入用户名"></td>
                 </tr>
                 <tr>
                     <td>密码</td>
                 </tr>
                 <tr>
-                    <td colspan="2"><input type="text"></td>
+                    <td colspan="2"><input @keyup.enter="login" v-model="password" type="password" placeholder="输入密码" ></td>
                 </tr>
                 <tr style="margin-top:10px">
                     <td colspan="2">
@@ -23,7 +23,7 @@
                 <tr>
                     <td>
                         <!-- <router-link to="/login" @click="loginStyle"> -->
-                            <button style="width:60px;margin-top:20px;">
+                            <button @click="login"  style="width:60px;margin-top:20px;">
                                 登录
                             </button>
                         <!-- </router-link> -->
@@ -42,19 +42,58 @@
 </template>
 
 <script>
+import axios from 'axios'
 export default {
 data(){
     return{
         flat:false,
+        username:'',
+        password:'',
+        // essay:JSON.parse(localStorage.getItem('essay')) || []
     }
 },
 components:{
 },
 methods:{
-    loginStyle(){
-        // this.a=this.loginStyle
+    login(){
+        // axios.defaults.baseURL='http://127.0.0.1/api',
+        axios({
+            method:'POST',
+            url:'/api/login',
+            data:{
+                username:this.username,
+                password:this.password
+            },
+
+        }).then((result) => {
+            if(result.status>=200&&result.status<300){
+                this.message=result.data.message
+                if(this.message!=='登录成功'){
+                    return alert(this.message)
+                }
+                // console.log(result.data.token);
+                if(result.data.token)
+                {   //向本地缓存发送token
+                    window.localStorage.setItem('token',result.data.token)
+                    // 替换当前路由路径
+                    return this.$router.replace('/background/home')
+                }
+            }
+        }).catch((err) => {
+            console.log(err.message);
+        });
+
     }
-    
+},
+watch:{
+    // essay:{
+    //     deep:true,
+    //     handler(value){
+    //         console.log(value);
+    //         localStorage.setItem('essay',JSON.stringify(value))
+            
+    //     }
+    //     }
 }
 }
 </script>
@@ -72,7 +111,7 @@ h2{
     font-style:oblique;
 }
 table{
-    margin-top: 20px;
+    margin-top:10px;
     display: flex;
     flex-direction:column;
     justify-content: center;
@@ -81,8 +120,10 @@ table{
 input{
     width: 100%;
     outline: none;
-    border: 0;background:none;
+    border: 0;
+    background:none;
     border-bottom: 1px solid rgba(0, 0, 0, .5);
+    text-align: center;
 }
 button{
     height: 25px;

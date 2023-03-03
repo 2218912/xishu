@@ -35,7 +35,7 @@
             route:[
               {path:'/',icon:'iconfont icon-zhuye',name:'主页'},
               {path:'/guidang',icon:'iconfont icon-guidangxiangmu',name:'归档'},
-              {path:'',icon:'iconfont icon-lianjie',name:'链接'},
+              {path:'/link',icon:'iconfont icon-lianjie',name:'链接'},
               {path:'/about',icon:'iconfont icon-shixin',name:'关于'},
               {path:'/login',icon:'iconfont icon-denglu',name:'登录'}
             ]
@@ -150,6 +150,7 @@
         transform: translateY(-50%);
         right: 0px;
         display: flex;
+        align-items: center;
         width: 350px;
         height: 30px;
         a{
@@ -161,7 +162,6 @@
         li{
           width: 50px;
           padding:0 10px;
-          
           i{
             line-height: 30px;
           }

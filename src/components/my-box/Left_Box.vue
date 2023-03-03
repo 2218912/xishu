@@ -1,6 +1,6 @@
 <template>
-    <div>
-        <div :class="{left_box:true,theme_white:theme,theme_black:!theme}">
+    <div :class="{left_box:true,theme_white:theme,theme_black:!theme}">
+        <!-- <div > -->
             <h3>
                 <slot name="title"></slot>
             </h3>
@@ -12,7 +12,7 @@
             <div id="img">
                 <slot name="img"></slot>
             </div>
-        </div>
+        <!-- </div> -->
     </div>
   
 </template>
@@ -40,6 +40,7 @@ export default {
     height: 200px;
     border-radius: 30px;
     box-shadow: 0 0 10px rgba(0, 0, 0, .3);
+    // background: rgba(0, 0, 0, .4);
     h3{
         margin-top: 5px;
         text-align: center;
